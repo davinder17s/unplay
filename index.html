@@ -101,6 +101,7 @@
             isPlaying: false,
             tempTimer: null,
             filterTerm: '',
+            AudioTimer: 0,
             info: {
                 duration: 0,
                 playedTime: 0
@@ -471,6 +472,7 @@
                 //-- /end search bar action
 
                 //-- watcher for seek
+                _o.AudioTimer = Date.now();
                 var IntervalWatcher = setInterval(function(){
                     if(_o.isPlaying == true) {
                         if(_o.tempTimer){
@@ -483,11 +485,12 @@
                             }
                             _o.updateSeekUI(percent);
                             _o.updateDuration();
-                            _o.info.playedTime += 0.300;
+                            _o.info.playedTime += (Date.now() - _o.AudioTimer) / 1000;
                         } else {
                             _o.next();
                         }
                     }
+                    _o.AudioTimer = Date.now();
                 }, 300);
             },
             // initialize references to elements

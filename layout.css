@@ -164,7 +164,7 @@ body {
             box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
             cursor: pointer;
             left: calc(0% - 5px); }
-            .player-container .player-ui .player-information-container .player-controls-container .seek .seek-control:active {
+            .player-container .player-ui .player-information-container .player-controls-container .seek .seek-control:hover {
               transform: scale(1.5); }
         .player-container .player-ui .player-information-container .player-controls-container .volume-icon {
           color: #fff;
@@ -192,7 +192,7 @@ body {
             box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
             cursor: pointer;
             transition: transform 0.3s ease; }
-            .player-container .player-ui .player-information-container .player-controls-container .volume .volume-control:active {
+            .player-container .player-ui .player-information-container .player-controls-container .volume .volume-control:hover {
               transform: scale(1.5); }
   .player-container .player-playlist {
     flex-basis: 340px;

@@ -181,7 +181,7 @@ body{
             box-shadow: 0 0 3px rgba(0,0,0,0.6);
             cursor: pointer;
             left: calc(0% - 5px);
-            &:active{
+            &:hover{
               transform: scale(1.5);
             }
           }
@@ -214,7 +214,7 @@ body{
             box-shadow: 0 0 3px rgba(0,0,0,0.6);
             cursor:pointer;
             transition: transform 0.3s ease;
-            &:active{
+            &:hover{
               transform: scale(1.5);
             }
           }
