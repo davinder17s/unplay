@@ -164,6 +164,7 @@ body{
           position:relative;
           margin: 0 15px;
           flex-shrink: 2;
+          cursor: pointer;
           .seek-bar {
             height: 2px;
             width:100%;
@@ -182,7 +183,10 @@ body{
             box-shadow: 0 0 3px rgba(0,0,0,0.6);
             cursor: pointer;
             left: calc(0% - 5px);
-            &:hover{
+            transition: transform 0.3s ease;
+          }
+          &:hover, &:active{
+            .seek-control{
               transform: scale(1.5);
             }
           }
@@ -190,6 +194,7 @@ body{
         .volume-icon {
           color: #fff;
           padding-top: 16px;
+          cursor: pointer;
         }
         .volume{
           flex-basis: 70px;
@@ -197,6 +202,7 @@ body{
           margin: 0 15px;
           flex-shrink:0;
           flex-grow: 1;
+          cursor: pointer;
           .volume-bar {
             height: 2px;
             width:100%;
@@ -215,7 +221,9 @@ body{
             box-shadow: 0 0 3px rgba(0,0,0,0.6);
             cursor:pointer;
             transition: transform 0.3s ease;
-            &:hover{
+          }
+          &:hover, &:active{
+            .volume-control {
               transform: scale(1.5);
             }
           }

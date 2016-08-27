@@ -147,7 +147,8 @@ body {
           flex-basis: 64%;
           position: relative;
           margin: 0 15px;
-          flex-shrink: 2; }
+          flex-shrink: 2;
+          cursor: pointer; }
           .player-container .player-ui .player-information-container .player-controls-container .seek .seek-bar {
             height: 2px;
             width: 100%;
@@ -164,18 +165,21 @@ body {
             background-color: #fff;
             box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
             cursor: pointer;
-            left: calc(0% - 5px); }
-            .player-container .player-ui .player-information-container .player-controls-container .seek .seek-control:hover {
-              transform: scale(1.5); }
+            left: calc(0% - 5px);
+            transition: transform 0.3s ease; }
+          .player-container .player-ui .player-information-container .player-controls-container .seek:hover .seek-control, .player-container .player-ui .player-information-container .player-controls-container .seek:active .seek-control {
+            transform: scale(1.5); }
         .player-container .player-ui .player-information-container .player-controls-container .volume-icon {
           color: #fff;
-          padding-top: 16px; }
+          padding-top: 16px;
+          cursor: pointer; }
         .player-container .player-ui .player-information-container .player-controls-container .volume {
           flex-basis: 70px;
           position: relative;
           margin: 0 15px;
           flex-shrink: 0;
-          flex-grow: 1; }
+          flex-grow: 1;
+          cursor: pointer; }
           .player-container .player-ui .player-information-container .player-controls-container .volume .volume-bar {
             height: 2px;
             width: 100%;
@@ -193,8 +197,8 @@ body {
             box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
             cursor: pointer;
             transition: transform 0.3s ease; }
-            .player-container .player-ui .player-information-container .player-controls-container .volume .volume-control:hover {
-              transform: scale(1.5); }
+          .player-container .player-ui .player-information-container .player-controls-container .volume:hover .volume-control, .player-container .player-ui .player-information-container .player-controls-container .volume:active .volume-control {
+            transform: scale(1.5); }
   .player-container .player-playlist {
     flex-basis: 340px;
     display: flex;

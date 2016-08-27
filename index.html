@@ -338,6 +338,24 @@
                 // set audio volume value
                 // actual gain value is from -1 to 1 so need to be offset to be between 0 and 1
                 _o.AudioGain.gain.value = ((value) - 1);
+                _o.changeVolumeIcon(value);
+            },
+            // dynamic change volume icon
+            changeVolumeIcon: function(value){
+                var _icon = $('i.fa', _o.elements.volumeIcon);
+                if(value < 0.05) {
+                    _icon.removeClass('fa-volume-up');
+                    _icon.removeClass('fa-volume-down');
+                    _icon.addClass('fa-volume-off');
+                } else if(value < 0.5) {
+                    _icon.removeClass('fa-volume-off');
+                    _icon.removeClass('fa-volume-up');
+                    _icon.addClass('fa-volume-down');
+                } else {
+                    _icon.removeClass('fa-volume-down');
+                    _icon.removeClass('fa-volume-off');
+                    _icon.addClass('fa-volume-up');
+                }
             },
             // get slider's current volume value
             getVolume: function(){
@@ -461,11 +479,22 @@
                 _o.elements.nextBtn.click(function(){
                     _o.next();
                 });
+                _o.elements.volumeIcon.click(function(){
+                    var _icon = $('i.fa',$(this));
+                    if(_icon.hasClass('fa-volume-up')) {
+                        _o.setVolume(0);
+                        _o.updateVolumeUI(0);
+                    } else {
+                        _o.setVolume(1);
+                        _o.updateVolumeUI(1);
+                    }
+                });
                 //-- /player controls handlers
 
                 //-- search bar action
                 $('#search').keyup(function(e){
                     e.preventDefault();
+                    // set filter value and refresh the playlist items
                     _o.filterTerm = $(this).val();
                     _o.refreshPlaylist();
 
@@ -473,21 +502,26 @@
                 //-- /end search bar action
 
                 //-- watcher for seek
-                _o.AudioTimer = Date.now();
+                _o.AudioTimer = Date.now(); // initial timer value
                 var IntervalWatcher = setInterval(function(){
                     if(_o.isPlaying == true) {
+                        // if user is seeking, do no update any thing
                         if(_o.tempTimer){
                             return;
                         }
+                        // if song is not ended and current play time is under duration
                         if(_o.info.duration != 0 && _o.info.playedTime <= _o.info.duration + 1){
                             var percent = (_o.info.playedTime / _o.info.duration);
+                            // set maximum percent value to 100% if it goes outside of it.
                             if(percent > 1) {
                                 percent = 1;
                             }
                             _o.updateSeekUI(percent);
                             _o.updateDuration();
+                            // add to play time: last polled time's difference
                             _o.info.playedTime += (Date.now() - _o.AudioTimer) / 1000;
                         } else {
+                            // otherwise forward to next song
                             _o.next();
                         }
                     }
@@ -507,6 +541,7 @@
                 _o.elements.nextBtn = $('.forward', _o.elements.controlsContainer);
                 _o.elements.stopBtn = $('.stop', _o.elements.controlsContainer);
                 _o.elements.playerArtistInfoContainer = $('.player-artist-info');
+                _o.elements.volumeIcon = $('.volume-icon');
             },
             // initialize all player components
             init: function(){
