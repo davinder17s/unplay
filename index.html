@@ -216,6 +216,7 @@
                     // read the file and set cached buffer to null
                     _o.AudioDecodeBuffer = null;
 
+                    $('.info-name', _o.elements.playerArtistInfoContainer).html('<i class="fa fa-refresh fa-spin"></i> Crafting music, please wait..');
                     var fr = new FileReader();
                     fr.onload = function(f){
                         // set current data source and play
