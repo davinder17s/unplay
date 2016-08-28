@@ -439,6 +439,18 @@ var unplay = (function(){
                 parseInt(duration / 60).toString().lpad('0', 2) + ':' + parseInt((duration) % 60).toString().lpad('0', 2);
             $('.info-length', _o.elements.playerArtistInfoContainer).html(playtimeInfo);
         },
+        updateTitle: function(deltaTime){
+            if(_o.isPlaying) {
+                window.title = _o.currentFile.name + ' ';
+                var title = _o.currentTitle || window.title;
+                title = title.substr(1) + title.substr(0, 1);
+                _o.currentTitle = title;
+                document.title = '(' + (_o.playlistFiles.indexOf(_o.currentFile) + 1) + '/' + _o.playlistFiles.length + ') ' + title;
+            } else {
+                document.title = 'Unplay - beta';
+                _o.currentTitle = '';
+            }
+        },
 
         /*************************************************
          * Initialize all player components
@@ -550,6 +562,7 @@ var unplay = (function(){
              */
             $(window).on('unplay.updated', function(event, deltaTime){
                 _o.onSeek(deltaTime); // update seek bar with time
+                _o.updateTitle(deltaTime);
             });
             //-- watcher for seek
 
