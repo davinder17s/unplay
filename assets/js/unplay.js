@@ -501,10 +501,10 @@ var unplay = (function(){
             //-- player volume control
 
             //-- player drag and drop handler
-            _o.elements.playerBody.on('dragover', function(e){
+            $(document).on('dragover', function(e){
                 e.preventDefault();
             });
-            _o.elements.playerBody.on('drop', function(e){
+            $(document).on('drop', function(e){
                 e.preventDefault();
                 $.each(e.originalEvent.dataTransfer.files, function(i, file){
                     _o.addFile(file);
