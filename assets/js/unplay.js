@@ -499,6 +499,9 @@ var unplay = (function(){
                 });
                 if(_o.currentFile == null) {
                     _o.setCurrentFile(_o.playlistFiles[0]);
+                } else if(_o.isPlaying == false && _o.info.duration == 0) {
+                    // already played all files and stopped, so play the first file
+                    _o.setCurrentFile(e.originalEvent.dataTransfer.files[0]);
                 }
                 _o.refreshPlaylist();
             });
