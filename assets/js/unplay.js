@@ -453,7 +453,7 @@ var unplay = (function(){
                 $(window).trigger('unplay.updated', [deltaTime]);
                 // update reference time.
                 _o.AudioTimer = Date.now();
-            }, 300);
+            }, updateInterval);
         },
         // initialize references to elements
         setReferences: function(){
