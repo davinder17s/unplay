@@ -52,10 +52,11 @@ body {
           margin-top: -31px;
           height: 160px; }
           .player-container .player-ui .player-information-container .player-information .player-art img {
-            max-width: 100%;
+            width: 160px;
             border: 5px solid rgba(255, 255, 255, 0.9);
             border-radius: 3px;
-            box-sizing: border-box; }
+            box-sizing: border-box;
+            height: 160px; }
         .player-container .player-ui .player-information-container .player-information .player-artist-info {
           flex-grow: 1;
           flex-basis: 90%;
