@@ -55,7 +55,8 @@ var unplay = (function(){
             prevBtn: null,
             nextBtn: null,
             stopBtn: null,
-            playerArtistInfoContainer: null
+            playerArtistInfoContainer: null,
+            artistImage: null
         },
 
         // Timers
@@ -218,7 +219,8 @@ var unplay = (function(){
             // if file refrence is empty, remove data src also
             if(file == null || !file) {
                 _o.currentDataSrc = null;
-                _o.info.tags = {}
+                _o.info.tags = {};
+                _o.elements.artistImage.prop('src', _o.elements.artistImage.data('default'));
             } else{
                 // read the file and set cached buffer to null
                 $(window).trigger('unplay.playlist.item.loading', [file]);
@@ -232,26 +234,28 @@ var unplay = (function(){
                 };
                 fr.readAsArrayBuffer(file);
 
-                // read tags
-                /*
+
                 jsmediatags.read(file, {
                     onSuccess: function(tags){
+                        _o.tags = tags;
                         if(tags.tags.picture) {
                             var image = tags.tags.picture;
                             var base64String = "";
                             for (var i = 0; i < image.data.length; i++) {
                                 base64String += String.fromCharCode(image.data[i]);
                             }
-                            $("#image").get(0).src = "data:" + image.format + ";base64," + window.btoa(base64String);
+                            _o.elements.artistImage.prop('src', "data:" + image.format + ";base64," + window.btoa(base64String));
                         } else {
                             // set default picture
+                            _o.elements.artistImage.prop('src', _o.elements.artistImage.data('default'));
                         }
                     },
                     onError: function(){
                         // set default picture
+                        _o.elements.artistImage.prop('src', _o.elements.artistImage.data('default'));
                     }
                 })
-                */
+
             }
         },
 
@@ -444,8 +448,17 @@ var unplay = (function(){
             var infoSampleRate = $('.info-sample-rate', _o.elements.playerArtistInfoContainer);
             var infoDuration = $('.info-length', _o.elements.playerArtistInfoContainer);
             if(_o.info.duration > 0) {
-                infoName.html(_o.currentFile.name);
-                infoSampleRate.html(_o.AudioDecodeBuffer.sampleRate + 'Hz');
+                if(_o.tags.tags) {
+                    var tagTitle = _o.tags.tags.title || _o.currentFile.name;
+                    var tagAlbum = _o.tags.tags.album || 'No album';
+                    var tagArtist = _o.tags.tags.artist || 'Some artist';
+                    var tagYear = _o.tags.tags.year || 'Year not known';
+                    infoName.html(tagTitle);
+                    infoSampleRate.html([tagAlbum, tagArtist, tagYear].join(', '));
+                } else {
+                    infoName.html(_o.currentFile.name);
+                    infoSampleRate.html(_o.AudioDecodeBuffer.sampleRate + 'Hz');
+                }
             } else {
                 infoName.html(infoName.data('default'));
                 infoSampleRate.html(infoSampleRate.data('default'));
@@ -464,7 +477,11 @@ var unplay = (function(){
         },
         updateTitle: function(deltaTime){
             if(_o.isPlaying) {
-                window.title = _o.currentFile.name + ' ';
+                var originalTitle = _o.currentFile.name;
+                if(_o.tags.tags && _o.tags.tags.title) {
+                    originalTitle = _o.tags.tags.title;
+                }
+                window.title = originalTitle + ' ';
                 var title = _o.currentTitle || window.title;
                 title = title.substr(1) + title.substr(0, 1);
                 _o.currentTitle = title;
@@ -504,6 +521,7 @@ var unplay = (function(){
             _o.elements.stopBtn = $('.stop', _o.elements.controlsContainer);
             _o.elements.playerArtistInfoContainer = $('.player-artist-info');
             _o.elements.volumeIcon = $('.volume-icon');
+            _o.elements.artistImage = $('#artist-image');
         },
         // user interface initialization
         initUI: function(){
