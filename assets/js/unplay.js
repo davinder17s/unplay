@@ -39,6 +39,7 @@ var unplay = (function(){
 
         // Current playing information
         info: {
+            tags: {},
             duration: 0,
             playedTime: 0
         },
@@ -217,6 +218,7 @@ var unplay = (function(){
             // if file refrence is empty, remove data src also
             if(file == null || !file) {
                 _o.currentDataSrc = null;
+                _o.info.tags = {}
             } else{
                 // read the file and set cached buffer to null
                 $(window).trigger('unplay.playlist.item.loading', [file]);
@@ -229,6 +231,27 @@ var unplay = (function(){
                     _o.play();
                 };
                 fr.readAsArrayBuffer(file);
+
+                // read tags
+                /*
+                jsmediatags.read(file, {
+                    onSuccess: function(tags){
+                        if(tags.tags.picture) {
+                            var image = tags.tags.picture;
+                            var base64String = "";
+                            for (var i = 0; i < image.data.length; i++) {
+                                base64String += String.fromCharCode(image.data[i]);
+                            }
+                            $("#image").get(0).src = "data:" + image.format + ";base64," + window.btoa(base64String);
+                        } else {
+                            // set default picture
+                        }
+                    },
+                    onError: function(){
+                        // set default picture
+                    }
+                })
+                */
             }
         },
 
