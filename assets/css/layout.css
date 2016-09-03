@@ -8,7 +8,7 @@ html, body {
   height: 100%; }
 
 body {
-  background-color: #607D8B;
+  background-color: #131418;
   font-family: "Titillium Web", sans-serif;
   display: flex;
   justify-content: center;
@@ -22,7 +22,7 @@ body {
   align-items: stretch; }
 
 .player-container {
-  background-color: #607D8B;
+  background-color: #5677fc;
   width: 1400px;
   display: flex;
   border-radius: 4px;
@@ -51,7 +51,7 @@ body {
           flex-grow: 1;
           flex-basis: 160px;
           flex-shrink: 0;
-          background-color: #0d47a1;
+          background-color: #455ede;
           margin-top: -31px;
           height: 160px; }
           .player-container .player-ui .player-information-container .player-information .player-art img {
@@ -81,7 +81,7 @@ body {
             margin: 0 0 1px; }
       .player-container .player-ui .player-information-container .player-controls-container {
         display: flex;
-        background-color: #0D47A1;
+        background-color: #455ede;
         -webkit-user-select: none;
         -khtml-user-select: none;
         -moz-user-select: -moz-none;
@@ -92,8 +92,8 @@ body {
           flex-basis: 140px;
           flex-shrink: 0; }
           .player-container .player-ui .player-information-container .player-controls-container .controls .button-round {
-            background-color: #fff;
-            color: #1565C0;
+            background-color: #ecf0f1;
+            color: #131418;
             display: inline-block;
             text-align: center;
             border-radius: 500px;
@@ -102,11 +102,11 @@ body {
             cursor: pointer;
             transition: background 0.3s ease, color 0.1s ease; }
             .player-container .player-ui .player-information-container .player-controls-container .controls .button-round:hover {
-              background-color: #03a9f4;
-              color: #fff; }
+              background-color: #131418;
+              color: #ecf0f1; }
             .player-container .player-ui .player-information-container .player-controls-container .controls .button-round:active {
-              background-color: #1565c0;
-              color: #fff; }
+              background-color: #5677fc;
+              color: #ecf0f1; }
           .player-container .player-ui .player-information-container .player-controls-container .controls .play {
             font-size: 18px;
             text-align: center;
@@ -158,14 +158,14 @@ body {
             width: 100%;
             position: absolute;
             top: 50%;
-            background-color: #fff; }
+            background-color: #5677fc; }
           .player-container .player-ui .player-information-container .player-controls-container .seek .seek-control {
             width: 10px;
             height: 10px;
             border-radius: 500px;
             position: absolute;
             top: calc(50% - 4px);
-            background-color: #fff;
+            background-color: #ecf0f1;
             box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
             cursor: pointer;
             left: calc(0% - 5px);
@@ -173,7 +173,7 @@ body {
           .player-container .player-ui .player-information-container .player-controls-container .seek:hover .seek-control, .player-container .player-ui .player-information-container .player-controls-container .seek:active .seek-control {
             transform: scale(1.5); }
         .player-container .player-ui .player-information-container .player-controls-container .volume-icon {
-          color: #fff;
+          color: #ecf0f1;
           padding-top: 16px;
           cursor: pointer; }
         .player-container .player-ui .player-information-container .player-controls-container .volume {
@@ -188,14 +188,14 @@ body {
             width: 100%;
             position: absolute;
             top: 50%;
-            background-color: #fff; }
+            background-color: #5677fc; }
           .player-container .player-ui .player-information-container .player-controls-container .volume .volume-control {
             width: 10px;
             height: 10px;
             border-radius: 500px;
             position: absolute;
             top: calc(50% - 4px);
-            background-color: #fff;
+            background-color: #ecf0f1;
             box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
             cursor: pointer;
             transition: transform 0.3s ease; }
@@ -206,7 +206,7 @@ body {
     display: flex;
     flex-shrink: 0;
     flex-direction: column;
-    background-color: #1565C0;
+    background-color: #3d63fc;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: -moz-none;
@@ -228,7 +228,7 @@ body {
       overflow-y: auto; }
       .player-container .player-playlist .player-playlist-list .player-playlist-list-item {
         display: flex;
-        color: #fff;
+        color: #ecf0f1;
         cursor: pointer;
         padding: 10px 5px;
         background-color: rgba(0, 0, 0, 0.2);
@@ -238,7 +238,7 @@ body {
         .player-container .player-playlist .player-playlist-list .player-playlist-list-item:hover {
           background-color: rgba(0, 0, 0, 0.3); }
         .player-container .player-playlist .player-playlist-list .player-playlist-list-item.active {
-          background-color: rgba(0, 0, 0, 0.5); }
+          background-color: #131418; }
         .player-container .player-playlist .player-playlist-list .player-playlist-list-item .playlist-item-icon {
           flex-basis: 40px;
           flex-shrink: 0;
