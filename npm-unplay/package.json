@@ -1,0 +1,31 @@
+{
+  "name": "unplay",
+  "version": "1.0.0",
+  "description": "html5 based audio player",
+  "main": "index.js",
+  "bin": {
+    "unplay": "./bin/unplay.js"
+  },
+  "scripts": {
+    "start": "node ./api/bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "html5",
+    "audio",
+    "player",
+    "standalone",
+    "package"
+  ],
+  "author": "https://in.linkedin.com/in/davinder-singh-402a0293",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "body-parser": "~1.15.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "jade": "~1.11.0",
+    "morgan": "~1.7.0",
+    "serve-favicon": "~2.3.0"
+  }
+}
