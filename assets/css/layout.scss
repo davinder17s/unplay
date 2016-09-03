@@ -1,3 +1,7 @@
+/* Unplay css */
+@import '_components/variables';
+
+/* Common css */
 * {
   margin:0;
   padding:0;
@@ -6,26 +10,31 @@ html,body{
   height: 100%;
 }
 body{
-  background-color: #607D8B;
-  font-family: 'Titillium Web', sans-serif;
+  background-color: $body-background;
+  font-family: $font-family;
   display:flex;
   justify-content: center;
   flex-direction: column;
 }
 
+/* Player */
 .player-body{
   display: flex;
   justify-content: center;
   padding: 10px 10px;
   align-items: stretch;
 }
+
+// Main container
 .player-container{
-  background-color: #607D8B;
-  width: 1400px;
+  background-color: $player-container-background;
+  width: $player-container-width;
   display:flex;
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  box-shadow: $player-container-shadow;
+
+  // User interface, left side
   .player-ui{
     flex-basis: 75%;
     display:flex;
@@ -33,39 +42,49 @@ body{
     background-size: cover;
     flex-grow:1;
     background-position: 50% 50%;
+
+    // Left side main container
     .player-information-container{
       flex-basis: 100%;
       display:flex;
       flex-direction: column;
+
+      // Status bar, where title etc are displayed
       .player-information{
         display:flex;
         flex-basis: 100%;
-        background-color: rgba(0,0,0,0.7);
-        color: #fff;
+        background-color: $player-information-background-color;
+        color: $player-information-text-color;
         margin-bottom: 25px;
         padding: 5px  15px;
         height: 110px;
+
+        // Artist image
         .player-art{
           flex-grow: 1;
           flex-basis: 160px;
           flex-shrink: 0;
-          background-color: #0d47a1;
+          background-color: $artist-image-background-color;
           margin-top: -31px;
           height:160px;
+
           img{
             width: 160px;
-            border:5px solid rgba(255,255,255,0.9);
+            border: $artist-image-image-border;
             border-radius: 3px;
             box-sizing: border-box;
             height:160px;
           }
         }
+
+        // Current song information
         .player-artist-info{
           flex-grow: 1;
           flex-basis: 90%;
           display:flex;
           flex-direction: column;
           padding-left: 15px;
+
           .player-song-name{
             font-size: 21px;
             font-weight: 400;
@@ -83,35 +102,42 @@ body{
           }
         }
       }
+
+      // Controls bar, play pause stop next prev buttons container
       .player-controls-container {
         display:flex;
-        background-color: #0D47A1;
+        background-color: $player-controls-bar-background;
         -webkit-user-select: none;
         -khtml-user-select: none;
         -moz-user-select: -moz-none;
         -o-user-select: none;
         user-select: none;
+
+        // Buttons
         .controls{
           padding: 8px 8px 8px 20px;
           flex-basis: 140px;
           flex-shrink:0;
+
           .button-round{
-            background-color: #fff;
-            color: #1565C0;
+            background-color: $player-controls-round-button-background;
+            color: $player-controls-round-button-text-color;
             display:inline-block;
             text-align: center;
             border-radius: 500px;
             vertical-align: middle;
-            box-shadow: 0 0 2px rgba(0,0,0,0.5);
+            box-shadow: 0 0 2px $player-controls-round-button-shadow;
             cursor: pointer;
             transition: background 0.3s ease, color 0.1s ease;
+
             &:hover{
-              background-color: #03a9f4;
-              color: #fff;
+              background-color: $player-controls-round-button-hover-background;
+              color: $player-controls-round-button-hover-text-color;
             }
+
             &:active{
-              background-color: #1565c0;
-              color: #fff;
+              background-color: $player-controls-round-button-active-background;
+              color: $player-controls-round-button-active-text-color;
             }
           }
           .play{
@@ -160,6 +186,8 @@ body{
             box-sizing: border-box;
           }
         }
+
+        // Seek bar
         .seek{
           flex-basis: 64%;
           position:relative;
@@ -171,8 +199,7 @@ body{
             width:100%;
             position:absolute;
             top: 50%;
-            background-color: #fff;
-            opacity: 0.3;
+            background-color: $seek-bar-bg;
           }
           .seek-control {
             width: 10px;
@@ -180,8 +207,8 @@ body{
             border-radius: 500px;
             position: absolute;
             top: calc(50% - 4px);
-            background-color: #fff;
-            box-shadow: 0 0 3px rgba(0,0,0,0.6);
+            background-color: $seek-control-bg;
+            box-shadow: $seek-control-shadow;
             cursor: pointer;
             left: calc(0% - 5px);
             transition: transform 0.3s ease;
@@ -192,8 +219,10 @@ body{
             }
           }
         }
+
+        // Volume controls
         .volume-icon {
-          color: #fff;
+          color: $volume-icon-color;
           padding-top: 16px;
           cursor: pointer;
         }
@@ -204,25 +233,27 @@ body{
           flex-shrink:0;
           flex-grow: 1;
           cursor: pointer;
+
           .volume-bar {
             height: 2px;
             width:100%;
             position:absolute;
             top: 50%;
-            background-color: #fff;
-            opacity: 0.3;
+            background-color: $volume-bar-bg;
           }
+
           .volume-control {
             width: 10px;
             height:10px;
             border-radius: 500px;
             position: absolute;
             top: calc(50% - 4px);
-            background-color: #fff;
-            box-shadow: 0 0 3px rgba(0,0,0,0.6);
+            background-color: $volume-control-bg;
+            box-shadow: $volume-control-shadow;
             cursor:pointer;
             transition: transform 0.3s ease;
           }
+
           &:hover, &:active{
             .volume-control {
               transform: scale(1.5);
@@ -233,17 +264,21 @@ body{
     }
 
   }
+
+  // Playlist side
   .player-playlist{
     flex-basis:340px;
     display:flex;
     flex-shrink: 0;
     flex-direction: column;
-    background-color: #1565C0;
+    background-color: $playlist-container-bg;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: -moz-none;
     -o-user-select: none;
     user-select: none;
+
+    // Search bar
     .player-playlist-search{
       padding: 10px 7px 0px;
       .search-input {
@@ -251,29 +286,33 @@ body{
         width: 100%;
         box-sizing: border-box;
         padding: 7px 10px;
-        font-family: 'Titillium Web', sans-serif;
+        font-family: $font-family;
         font-size: 16px;
       }
     }
+
+    // Playlist list
     .player-playlist-list{
       margin-top: 10px;
       padding: 0 0 10px;
       height: 600px;
       overflow-y:auto;
+
+      // List Single item
       .player-playlist-list-item{
         display:flex;
-        color: #fff;
+        color: $playlist-item-color;
         cursor: pointer;
         padding: 10px 5px;
-        background-color: rgba(0,0,0,0.2);
+        background-color: $playlist-item-bg-color;
         margin-bottom:1px;
         font-size: 14px;
         transition: background 0.3s ease;
         &:hover{
-          background-color: rgba(0,0,0,0.3);
+          background-color: $playlist-item-hover-bg-color;
         }
         &.active{
-          background-color: rgba(0,0,0,0.5);
+          background-color: $playlist-item-active-bg-color;
         }
         .playlist-item-icon{
           flex-basis: 40px;
@@ -290,10 +329,10 @@ body{
           flex-shrink: 0;
           text-align: center;
         }
-      }
-    }
-  }
-}
+      } //  -- End single item
+    } // -- End playlist list container
+  } // -- End playlist
+} // -- End player Container
 
 .player-status:not(.status-playing){
   .pause {
