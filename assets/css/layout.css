@@ -37,7 +37,6 @@ body {
     background-position: 50% 50%; }
     .player-container .player-ui .player-information-container {
       flex-basis: 100%;
-      display: flex;
       flex-direction: column; }
       .player-container .player-ui .player-information-container .player-information {
         display: flex;
